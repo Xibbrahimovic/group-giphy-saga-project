@@ -3,8 +3,8 @@
 function GiphyItem ({gif}) {
     return (
         <div>
-            <p>HELLO</p>
-            {/* <img src="" alt="" /> */}
+            <p>{gif.title}</p>
+            <img src={gif.images.fixed_height.url} alt="" />
         </div>
     )
 } // end GiphyItem
