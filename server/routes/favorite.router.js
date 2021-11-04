@@ -4,9 +4,21 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 // return all favorite images
+
 router.get("/", (req, res) => {
-  res.sendStatus(200);
+  const queryText =
+    "SELECT * FROM favorites JOIN category ON category.id = favorites.category_id;";
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log("Error in favorite GET", err);
+      res.sendStatus(500);
+    });
 });
+//isiah
 
 // add a new favorite
 router.post("/", (req, res) => {
