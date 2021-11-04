@@ -20,6 +20,7 @@ function* rootSaga() {
 
 function* fetchResults(action){
     try{
+        console.log('this is action.payload', action.payload);
         let searchTerm = action.payload;
         const response = yield axios.get(`/api/search/${searchTerm}`)
         //sends results to searchReducer
@@ -27,7 +28,7 @@ function* fetchResults(action){
     }
     catch{
         console.log(err);
-        put({type: 'FETCH_RESULTS_ERROR'})
+        put({type: 'ERROR'})
     }
 }
 
@@ -55,7 +56,7 @@ function* addFavorite(action){
 
 function* updateFavorite(action){
     try{
-        yield axios.put(`/api/favorite/:${favId}`);
+        yield axios.put(`/api/favorite/${favId}`);
         yield put({type: 'FETCH_FAVORITES'})
     }
     catch(err){
@@ -96,7 +97,7 @@ const store = createStore(
     applyMiddleware(sagaMiddleware, logger)
 );
 
-createSagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
 <Provider store={store}>
