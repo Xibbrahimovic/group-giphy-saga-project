@@ -10,7 +10,12 @@ const CategoryForm = ({ favGif, setGifDisplay }) => {
 
   const categoryChange = (event) => {
     console.log(event.target.value);
-    setCategory({ ...category, category_id: event.target.value });
+    // setCategory({ ...category, category_id: event.target.value });
+    dispatch({
+      type: "UPDATE_FAVORITE",
+      payload: { id: favGif.id, category_id: event.target.value },
+    });
+    setGifDisplay(true);
   };
 
   const updateCategory = (event) => {
@@ -25,8 +30,8 @@ const CategoryForm = ({ favGif, setGifDisplay }) => {
       <form onSubmit={updateCategory}>
         <div>
           <select onChange={categoryChange} name="category">
-            <option hidden="hidden">Category</option>
-            <option value={2}>Funny</option>
+            <option>Category is: {favGif.category_id}</option>
+            <option>Funny</option>
 
             <option value={3}>Cohort</option>
 
@@ -43,7 +48,7 @@ const CategoryForm = ({ favGif, setGifDisplay }) => {
         <div>
           <button
             onClick={() =>
-              dispatch({ type: "DELETE_FAVORITE", payload: newGif.id })
+              dispatch({ type: "DELETE_FAVORITE", payload: favGif.id })
             }
           >
             Remove Favorite
