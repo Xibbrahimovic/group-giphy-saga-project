@@ -6,7 +6,8 @@ const router = express.Router();
 // return all favorite images
 
 router.get("/", (req, res) => {
-  const queryText = "SELECT * FROM favorites ORDER BY id DESC;";
+  const queryText =
+    "SELECT favorites.id, favorites.category_id, favorites.title, favorites.url, category.name AS category_name FROM favorites JOIN category ON category.id = favorites.category_id ORDER BY id DESC;";
   pool
     .query(queryText)
     .then((result) => {

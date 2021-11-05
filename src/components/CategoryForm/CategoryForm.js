@@ -30,8 +30,8 @@ const CategoryForm = ({ favGif, setGifDisplay }) => {
       <form onSubmit={updateCategory}>
         <div>
           <select onChange={categoryChange} name="category">
-            <option>Category is: {favGif.category_id}</option>
-            <option>Funny</option>
+            <option>Current: {favGif.category_name}</option>
+            <option value={2}>Funny</option>
 
             <option value={3}>Cohort</option>
 
