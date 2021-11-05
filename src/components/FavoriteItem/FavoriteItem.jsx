@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./FavoriteItem.css";
+import CategoryForm from "../CategoryForm/CategoryForm.js";
 
 export default function FavoriteItem({ favGif }) {
   // variable for displaying gif versus CategoryForm
@@ -25,8 +26,7 @@ export default function FavoriteItem({ favGif }) {
         <img src={favGif.url} onClick={clickHandler} className="gif" />
       ) : (
         <div className="form-holder">
-          {/* <CategoryForm favGif={favGif} setGifDisplay={setGifDisplay}/> */}
-          this will be a form
+          <CategoryForm favGif={favGif} setGifDisplay={setGifDisplay} />
         </div>
       )}
     </div>

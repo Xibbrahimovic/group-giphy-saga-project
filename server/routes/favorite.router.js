@@ -6,8 +6,7 @@ const router = express.Router();
 // return all favorite images
 
 router.get("/", (req, res) => {
-  const queryText =
-    "SELECT * FROM favorites JOIN category ON category.id = favorites.category_id;";
+  const queryText = "SELECT * FROM favorites;";
   pool
     .query(queryText)
     .then((result) => {
@@ -39,7 +38,7 @@ router.post("/", (req, res) => {
 router.put("/:favId", (req, res) => {
   // req.body should contain a category_id to add to this favorite image
   const categoryId = req.body.category_id;
-  console.log(categoryId);
+  console.log(req.body);
   // grab the id of the favorite being updated
   const { favId } = req.params;
   const queryText = `UPDATE "favorites" SET "category_id" = $1 WHERE "id" = $2;`;
