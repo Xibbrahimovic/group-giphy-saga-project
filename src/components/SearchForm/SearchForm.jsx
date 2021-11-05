@@ -9,7 +9,6 @@ function SearchForm () {
     const handleClick = (e) => {
         e.preventDefault();
         console.log('clicked');
-        setSearchTerm(searchTerm)
         dispatch({
             type: 'FETCH_RESULTS', payload: searchTerm
         })
@@ -21,9 +20,10 @@ function SearchForm () {
             type="text"
             placeholder="Gif type"
             value={searchTerm}
-            onChange={ (e) => handleClick(e.target.value) } 
+            onChange={ (e) => setSearchTerm(e.target.value) } 
             />
-            <button onClick={handleClick}></button>
+            <button onClick={handleClick}>SEARCH</button>
+            <button>FAVORITE LIST</button>
         </form>
     )
 } // end SearchForm
