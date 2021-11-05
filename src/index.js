@@ -13,6 +13,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_FAVORITES', fetchFavorites);
     yield takeEvery('ADD_FAVORITE', addFavorite);
     yield takeEvery('UPDATE_FAVORITE', updateFavorite);
+    yield takeEvery('DELETE_FAVORITE', removeFavorite);
 }
 
 function* fetchResults(action) {
@@ -61,6 +62,15 @@ function* updateFavorite(action) {
         yield put({ type: 'POST_ERROR' })
     }
 }
+
+function* removeFavorite(action) {
+    try {
+      yield axios.delete(`/api/favorite/${action.payload}`)
+      yield put({ type: 'FETCH_FAVORITES' })
+    } catch (err) {
+      console.log('Error in DELETE', err);
+    }
+  }
 
 //reducer to store favorites 
 const favoriteReducer = (state = [], action) => {
