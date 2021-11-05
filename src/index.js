@@ -19,6 +19,7 @@ function* rootSaga() {
 function* fetchResults(action) {
     try {
         console.log('this is action.payload', action.payload);
+
         let searchTerm = action.payload;
         const response = yield axios.get(`/api/search/${searchTerm}`)
         //sends results to searchReducer
