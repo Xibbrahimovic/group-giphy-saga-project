@@ -3,32 +3,25 @@ import {useState} from 'react';
 
 const CategoryForm = ({taco}) => {
     const dispatch = useDispatch();
-    const [flipGif, setFlipGif] = useState(false)
-
-    const toggleDropdown = () => {
-        setFlipGif(!flipGif)
-    }
+    const [category, setCategory] = useState({
+        id: taco.id,
+        category_id: 1,
+        title: taco.title,
+        url: taco.url
+    })
 
     const categoryChange = (event, property) => {
-        
+        setCategory({category, [property]: event.target.value})
     }
 
     const updateCategory = event => {
         event.preventDefault();
-        dispatch({ type: 'UPDATE_FAVORITE', payload: taco.category_id})
+        dispatch({ type: 'UPDATE_FAVORITE', payload: category})
     }
 
     return (
         <div>
-
-
-            <img 
-                src={taco.url}
-                alt={taco.title}
-                onClick={toggleDropdown}
-            />
-
-            <div>
+            <form onSubmit={updateCategory}>
                 <select name="category">
                     <option hidden="hidden">Default</option>
                     
@@ -62,9 +55,8 @@ const CategoryForm = ({taco}) => {
                     Meme
                     </option>
                 </select>
-            </div>
-
-            {flipGif ? }
+                <input type='submit' value='Change Category' />
+            </form>
         </div>
     )
 
