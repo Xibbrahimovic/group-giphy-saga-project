@@ -1,17 +1,15 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 
-const CategoryForm = ({taco}) => {
+const CategoryForm = ({favGif}) => {
     const dispatch = useDispatch();
     const [category, setCategory] = useState({
-        id: taco.id,
+        id: newGif.id,
         category_id: 1,
-        title: taco.title,
-        url: taco.url
     })
 
-    const categoryChange = (event, property) => {
-        setCategory({category, [property]: event.target.value})
+    const categoryChange = (event, ) => {
+        setCategory({...category, property: event.target.value})
     }
 
     const updateCategory = event => {
@@ -26,32 +24,32 @@ const CategoryForm = ({taco}) => {
                     <option hidden="hidden">Default</option>
                     
                     <option 
-                    value={taco.category_id}
-                    onChange={(event) => categoryChange(event, 2)}>
+                    value={2}
+                    onChange={categoryChange}>
                     Funny
                     </option>
 
                     <option 
-                    value={taco.category_id}
-                    onChange={(event) => categoryChange(event, 3)}>
+                    value={3}
+                    onChange={categoryChange}>
                     Cohort
                     </option>
 
                     <option 
-                    value={taco.category_id}
-                    onChange={(event) => categoryChange(event, 4)}>
+                    value={4}
+                    onChange={categoryChange}>
                     Cartoon
                     </option>
                     
                     <option 
-                    value={taco.category_id}
-                    onChange={(event) => categoryChange(event, 5)}>
+                    value={5}
+                    onChange={categoryChange}>
                     NSFW
                     </option>
                     
                     <option 
-                    value={taco.category_id}
-                    onChange={(event) => categoryChange(event, 6)}>
+                    value={6}
+                    onChange={categoryChange}>
                     Meme
                     </option>
                 </select>
