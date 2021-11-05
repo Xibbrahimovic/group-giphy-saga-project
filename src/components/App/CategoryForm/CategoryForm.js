@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-const CategoryForm = ({ favGif }) => {
+const CategoryForm = ({ favGif, setGifDisplay }) => {
     const dispatch = useDispatch();
     const [category, setCategory] = useState({
         id: favGif.id,
@@ -15,6 +15,7 @@ const CategoryForm = ({ favGif }) => {
     const updateCategory = event => {
         event.preventDefault();
         dispatch({ type: 'UPDATE_FAVORITE', payload: category })
+        setGifDisplay(true)
     }
 
     return (
