@@ -6,6 +6,7 @@ const router = express.Router();
 // return all favorite images
 
 router.get("/", (req, res) => {
+  // join the two tables so we can access the category names
   const queryText =
     "SELECT favorites.id, favorites.category_id, favorites.title, favorites.url, category.name AS category_name FROM favorites JOIN category ON category.id = favorites.category_id ORDER BY id DESC;";
   pool
