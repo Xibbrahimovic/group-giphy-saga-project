@@ -1,13 +1,14 @@
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
+import FavoriteItem from "../FavoriteItem/FavoriteItem.jsx";
 
-
-function FavoriteList () {
-    const favoriteList = useSelector(store => store.favoriteReducer)
-    return (
-        {favoriteList.map((gif) => {
-            return (
-                <GiphyItem gif={gif}/>
-            )
-        })}
-    )
+export default function FavoriteList() {
+  const favoriteList = useSelector((store) => store.favoriteReducer);
+  console.log("this is favoriteList:", favoriteList);
+  return (
+    <div>
+      {favoriteList.map((favGif, i) => (
+        <FavoriteItem key={i} favGif={favGif} />
+      ))}
+    </div>
+  );
 } // end FavoriteList
