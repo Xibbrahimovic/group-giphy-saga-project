@@ -42,9 +42,7 @@ const CategoryForm = ({ favGif, setGifDisplay }) => {
             <option value={6}>Meme</option>
           </select>
         </div>
-        <div>
-          <input type="submit" value="Submit Change" />
-        </div>
+       
         <div>
           <button
             onClick={() =>
@@ -53,7 +51,9 @@ const CategoryForm = ({ favGif, setGifDisplay }) => {
           >
             Remove Favorite
           </button>
+          
         </div>
+        <button onClick={()=> setGifDisplay(true)}>cancel</button>
       </form>
     </div>
   );
