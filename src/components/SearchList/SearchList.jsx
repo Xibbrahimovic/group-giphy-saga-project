@@ -1,5 +1,11 @@
 import { useSelector } from "react-redux"
 import GiphyItem from "../GiphyItem/GiphyItem"
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { ImageList } from '@mui/material';
+import './SearchList.css';
 
 function SearchList() {
 
@@ -8,14 +14,15 @@ function SearchList() {
     // console.log('this is giphylist', giphyList);
 
     return (
-        <div>
+
+            <ImageList sx={{}} cols={3} rowHeight={164}>
             {giphyList.map((gif) => {
                 return (
                     <GiphyItem 
                     key={gif.id} gif={gif} />
                 )
             })}
-        </div>
+            </ImageList>
     )
 
 } // end SearchList
