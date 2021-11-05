@@ -3,11 +3,9 @@ import { useDispatch } from "react-redux";
 import { TextField, Button} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-
 function SearchForm() {
-
-    const [searchTerm, setSearchTerm] = useState('');
-    const dispatch = useDispatch();
+  const [searchTerm, setSearchTerm] = useState("");
+  const dispatch = useDispatch();
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -30,13 +28,11 @@ function SearchForm() {
                 />
                 <Button 
                 onClick={handleClick}>SEARCH</Button>
-                <Button>FAVORITE LIST</Button>
-                {/* <SearchIcon
-                    fontSize="large"
-                    onClick={handleClick}></SearchIcon> */}
+            
             </div>
         </form>
     )
+
 } // end SearchForm
 
 export default SearchForm;

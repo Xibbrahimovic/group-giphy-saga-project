@@ -8,23 +8,22 @@ import { ImageList } from '@mui/material';
 import './SearchList.css';
 
 function SearchList() {
-
-    const giphyList = useSelector(store => store.searchReducer)
+    const giphyList = useSelector((store) => store.searchReducer);
 
     // console.log('this is giphylist', giphyList);
 
     return (
 
-            <ImageList sx={{}} cols={3} rowHeight={164}>
+        <ImageList sx={{}} cols={3} rowHeight={164}>
             {giphyList.map((gif) => {
                 return (
-                    <GiphyItem 
-                    key={gif.id} gif={gif} />
+                    <GiphyItem
+                        key={gif.id} gif={gif} />
                 )
             })}
-            </ImageList>
+        </ImageList>
     )
 
 } // end SearchList
 
-export default SearchList
+export default SearchList;
