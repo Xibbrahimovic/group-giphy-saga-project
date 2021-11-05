@@ -1,6 +1,11 @@
 import { useState } from "react";
 import "./FavoriteItem.css";
 import CategoryForm from "../CategoryForm/CategoryForm.js";
+import { CardActionArea, CardActions, Button, ImageList} from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 
 export default function FavoriteItem({ favGif }) {
   // variable for displaying gif versus CategoryForm
@@ -21,14 +26,32 @@ export default function FavoriteItem({ favGif }) {
   };
   console.log(gifDisplay);
   return (
-    <div>
-      {gifDisplay ? (
-        <img src={favGif.url} onClick={clickHandler} className="gif" />
-      ) : (
-        <div className="form-holder">
-          <CategoryForm favGif={favGif} setGifDisplay={setGifDisplay} />
-        </div>
-      )}
-    </div>
+    <Card
+        className="card"
+        sx={{ maxWidth: 345,
+        margin: .5 }}>
+        <CardActionArea>
+          
+          {gifDisplay ? 
+          <CardMedia
+            onClick={clickHandler}
+            component="img"
+            height="300"
+            image={favGif.url}
+            alt="green iguana"
+          /> :  <CategoryForm favGif={favGif} setGifDisplay={setGifDisplay} /> }
+          <CardContent>
+            <Typography 
+            gutterBottom variant="p" component="div">
+              {favGif.title}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+        
+      </CardActions>
+      </Card>
+
+
   );
 }

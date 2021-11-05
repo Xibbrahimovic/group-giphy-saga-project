@@ -1,14 +1,18 @@
 import { useSelector } from "react-redux";
 import FavoriteItem from "../FavoriteItem/FavoriteItem.jsx";
+import { ImageList } from '@mui/material';
 
-export default function FavoriteList() {
+function FavoriteList() {
+   
   const favoriteList = useSelector((store) => store.favoriteReducer);
   console.log("this is favoriteList:", favoriteList);
   return (
-    <div>
+    <ImageList sx={{}} cols={3} rowHeight={164}>
       {favoriteList.map((favGif, i) => (
         <FavoriteItem key={i} favGif={favGif} />
       ))}
-    </div>
+    </ImageList>
   );
 } // end FavoriteList
+
+export default FavoriteList;

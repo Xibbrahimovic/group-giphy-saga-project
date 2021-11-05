@@ -1,30 +1,38 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { TextField, Button} from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 function SearchForm() {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log("clicked");
-    dispatch({
-      type: "FETCH_RESULTS",
-      payload: searchTerm,
-    });
-  }; // end handleClick
+    const handleClick = (e) => {
+        e.preventDefault();
+        console.log('clicked');
+        dispatch({
+            type: 'FETCH_RESULTS', payload: searchTerm
+        })
+        setSearchTerm('');
+    } // end handleClick
 
-  return (
-    <form>
-      <input
-        type="text"
-        placeholder="Gif type"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <button onClick={handleClick}>SEARCH</button>
-    </form>
-  );
+    return (
+        <form onSubmit={handleClick}>
+            <div>
+                <TextField 
+                id="outlined-basic" label="What type of gif?" variant="outlined"
+                    type="text"
+                    placeholder="Gif type"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <Button 
+                onClick={handleClick}>SEARCH</Button>
+            
+            </div>
+        </form>
+    )
+
 } // end SearchForm
 
 export default SearchForm;
