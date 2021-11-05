@@ -2,6 +2,7 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect} from 'react';
 import SearchList from '../SearchList/SearchList';
+import SearchForm from '../SearchForm/SearchForm';
 
 function App(props) {
 
@@ -19,6 +20,7 @@ function App(props) {
     
     <div>
       <h1>Giphy Search!</h1>
+      <SearchForm />
       <SearchList />
     </div>
 

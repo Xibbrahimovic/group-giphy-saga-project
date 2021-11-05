@@ -15,7 +15,7 @@ VALUES ('default'), ('funny'), ('cohort'), ('cartoon'), ('nsfw'), ('meme');
 
 CREATE TABLE "favorites" (
     "id" SERIAL PRIMARY KEY,
-    "category_id" INTEGER REFERENCES "category",
+    "category_id" INTEGER REFERENCES "category" DEFAULT 1,
     "title" VARCHAR (100),
-    "url" VARCHAR(500);
+    "url" VARCHAR(500)
 )
